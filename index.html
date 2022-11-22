@@ -1,0 +1,125 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Document</title>
+        <link rel="stylesheet" href="style.css">
+		<script>
+			function initialize() {
+				penOutput = document.getElementById("penout");
+                nickOutput = document.getElementById("nickout");
+                dimOutput = document.getElementById("dimout");
+                quartOutput = document.getElementById("quartout");
+                totalOutput = document.getElementById("sum");
+				numPen = 0;
+                numNick = 0;
+                numDim = 0;
+                numQuart = 0;
+                total = 0;
+				displayP();
+                displayN();
+                displayD();
+                displayQ();
+                displayT();
+			}
+
+			function addOneP() {
+				numPen++;
+				displayP();
+                calcTotal()
+			}
+            function addOneN() {
+				numNick++;
+				displayN();
+                calcTotal()
+			}
+            function addOneD() {
+				numDim++;
+				displayD();
+                calcTotal()
+			}
+            function addOneQ() {
+				numQuart++;
+				displayQ();
+                calcTotal()
+			}
+
+			function subtractOneP() {
+                if (numPen > 0 ) {
+                    numPen--;
+                }
+				displayP();
+                calcTotal()
+			}
+            function subtractOneN() {
+                if (numNick > 0 ) {
+                    numNick--;
+                }
+				displayN();
+                calcTotal()
+			}
+            function subtractOneD() {
+                if (numDim > 0 ) {
+                    numDim--;
+                }
+				displayD();
+                calcTotal()
+			}
+            function subtractOneQ() {
+                if (numQuart > 0 ) {
+                    numQuart--;
+                }
+				displayQ();
+                calcTotal()
+			}
+            
+            function calcTotal() {
+                total = (numPen * .01) + (numNick * .05) + (numDim * .1) + (numQuart * .25);
+                total = Math.round(total * 100) / 100;
+                displayT();
+            }
+
+			function displayP() {
+				penout.innerHTML = numPen;
+			}
+            function displayN() {
+				nickout.innerHTML = numNick;
+			}
+            function displayD() {
+				dimout.innerHTML = numDim;
+			}
+            function displayQ() {
+				quartout.innerHTML = numQuart;
+			}
+            function displayT() {
+                sum.innerHTML = total;
+            }
+		</script>
+	</head>
+	<body onload = "initialize();">
+        <!--pennies-->
+        Number of pennies: 
+        <h4 id = "penout"></h4>
+		<button onclick = "addOneP();">Add</button> 
+        <button onclick = "subtractOneP();">Subtract</button> 
+        <br><br>
+        <!--nickels-->
+        Number of nickels: 
+        <h4 id = "nickout"></h4>
+		<button onclick = "addOneN();">Add</button> 
+        <button onclick = "subtractOneN();">Subtract</button> 
+        <br><br>
+        <!--dimes-->
+        Number of dimes: 
+        <h4 id = "dimout"></h4>
+		<button onclick = "addOneD();">Add</button> 
+        <button onclick = "subtractOneD();">Subtract</button> 
+        <br><br>
+        <!--quarters-->
+        Number of quarters: 
+        <h4 id = "quartout"></h4>
+		<button onclick = "addOneQ();">Add</button> 
+        <button onclick = "subtractOneQ();">Subtract</button> 
+        <h3>Total: </h3>
+        <h2 id = "sum"></h2>
+	</body>
+</html>
