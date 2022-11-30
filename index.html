@@ -8,7 +8,7 @@ Count De Money
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Document</title>
+		<title>Count de Money</title>
         <link rel="stylesheet" href="style.css">
         <style>
             body {
@@ -48,15 +48,15 @@ Count De Money
             }
         }
         function display(){
-            penny = parseInt(document.getElementById("penny").innerHTML);
-            document.getElementById('penval').innerHTML = "$" + penny/100;
-            nickel =  parseInt(document.getElementById("nickel").innerHTML) * 5;
-            document.getElementById('nicval').innerHTML = "$" + nickel/100;
+            pen = parseInt(document.getElementById("pen").innerHTML);
+            document.getElementById('penval').innerHTML = "$" + pen/100;
+            nick =  parseInt(document.getElementById("nick").innerHTML) * 5;
+            document.getElementById('nicval').innerHTML = "$" + nick/100;
             dime =  parseInt(document.getElementById("dime").innerHTML) * 10;
             document.getElementById('dimval').innerHTML = "$" + dime/100;
-            quarter =  parseInt(document.getElementById("quarter").innerHTML) * 25;
-            document.getElementById('quartval').innerHTML = "$" + quarter/100;
-            sum = (penny + nickel + dime + quarter)/100;
+            quart =  parseInt(document.getElementById("quart").innerHTML) * 25;
+            document.getElementById('quartval').innerHTML = "$" + quart/100;
+            sum = (pen + nick + dime + quart) / 100;
             total = document.getElementById("total");
             total.innerHTML = "$" + sum;
         }
@@ -67,25 +67,25 @@ Count De Money
         <h4>Pennies</h4>
         <div id="stats">
             <p>number of pennies: </p>
-            <p id="penny">0</p>
+            <p id="pen">0</p>
         </div>
         <div id="stats">
             <p>total value of pennies:</p>
             <p id="penval">$0.00</p>
         </div>
-        <button onclick="add('penny');">Add</button>
-        <button onclick="subtract('penny');">Subtract</button>
+        <button onclick="add('pen');">Add</button>
+        <button onclick="subtract('pen');">Subtract</button>
         <h4>Nickels</h4>
         <div id="stats">
             <p>number of nickels:</p>
-            <p id="nickel">0</p>
+            <p id="nick">0</p>
         </div>
         <div id="stats">
             <p>total value of nickels:</p>
             <p id="nicval">$0.00</p>
         </div>
-        <button onclick="add('nickel');">Add</button>
-        <button onclick="subtract('nickel');">Subtract</button>
+        <button onclick="add('nick');">Add</button>
+        <button onclick="subtract('nick');">Subtract</button>
         <h4>Dimes</h4>
         <div id="stats">
             <p>number of dimes:</p>
@@ -100,15 +100,16 @@ Count De Money
         <h4>Quarters</h4>
         <div id="stats">
             <p>number of quarters:</p>
-            <p id="quarter">0</p>
+            <p id="quart">0</p>
         </div>
         <div id="stats">
             <p>total value of quarters :</p>
             <p id="quartval">$0.00</p>
         </div>
-        <button onclick="add('quarter');">Add</button>
-        <button onclick="subtract('quarter');">Subtract</button>
+        <button onclick="add('quart');">Add</button>
+        <button onclick="subtract('quart');">Subtract</button>
         <h3>Total Value: </h3>
         <p id="total">$0.00</p>
 	</body>
 </html>
+
