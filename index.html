@@ -10,123 +10,105 @@ Count De Money
 	<head>
 		<title>Document</title>
         <link rel="stylesheet" href="style.css">
+        <style>
+            body {
+            font-size: 20px;
+            background-color: rgb(208, 183, 208);
+            }
+            h1 {
+                text-align: center;
+            }
+            button{
+                background-color: rgb(188, 188, 235); 
+                border-radius: 8px;
+                border: solid rgb(126, 126, 204);
+                color: white;
+                padding: 10px 25px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 15px;
+            }
+            #stats {
+                display: flex;
+                flex-wrap: nowrap;
+            }
+        </style>
 		<script>
-			function initialize() {
-				penOutput = document.getElementById("penout");
-                nickOutput = document.getElementById("nickout");
-                dimOutput = document.getElementById("dimout");
-                quartOutput = document.getElementById("quartout");
-                totalOutput = document.getElementById("sum");
-				numPen = 0;
-                numNick = 0;
-                numDim = 0;
-                numQuart = 0;
-                total = 0;
-				displayP();
-                displayN();
-                displayD();
-                displayQ();
-                displayT();
-			}
-
-			function addOneP() {
-				numPen++;
-				displayP();
-                calcTotal()
-			}
-            function addOneN() {
-				numNick++;
-				displayN();
-                calcTotal()
-			}
-            function addOneD() {
-				numDim++;
-				displayD();
-                calcTotal()
-			}
-            function addOneQ() {
-				numQuart++;
-				displayQ();
-                calcTotal()
-			}
-
-			function subtractOneP() {
-                if (numPen > 0 ) {
-                    numPen--;
-                }
-				displayP();
-                calcTotal()
-			}
-            function subtractOneN() {
-                if (numNick > 0 ) {
-                    numNick--;
-                }
-				displayN();
-                calcTotal()
-			}
-            function subtractOneD() {
-                if (numDim > 0 ) {
-                    numDim--;
-                }
-				displayD();
-                calcTotal()
-			}
-            function subtractOneQ() {
-                if (numQuart > 0 ) {
-                    numQuart--;
-                }
-				displayQ();
-                calcTotal()
-			}
-            
-            function calcTotal() {
-                total = (numPen * .01) + (numNick * .05) + (numDim * .1) + (numQuart * .25);
-                total = Math.round(total * 100) / 100;
-                displayT();
+			function add(id){
+            number = document.getElementById(id);
+            number.innerHTML = parseInt(number.innerHTML) + 1; 
+            display();
+        }
+        function subtract(id){
+            number = document.getElementById(id);
+            if(parseInt(number.innerHTML) > 0){
+                number.innerHTML = parseInt(number.innerHTML) - 1;
+                display(); 
             }
-
-			function displayP() {
-				penout.innerHTML = numPen;
-			}
-            function displayN() {
-				nickout.innerHTML = numNick;
-			}
-            function displayD() {
-				dimout.innerHTML = numDim;
-			}
-            function displayQ() {
-				quartout.innerHTML = numQuart;
-			}
-            function displayT() {
-                sum.innerHTML = total;
-            }
+        }
+        function display(){
+            penny = parseInt(document.getElementById("penny").innerHTML);
+            document.getElementById('penval').innerHTML = "$" + penny/100;
+            nickel =  parseInt(document.getElementById("nickel").innerHTML) * 5;
+            document.getElementById('nicval').innerHTML = "$" + nickel/100;
+            dime =  parseInt(document.getElementById("dime").innerHTML) * 10;
+            document.getElementById('dimval').innerHTML = "$" + dime/100;
+            quarter =  parseInt(document.getElementById("quarter").innerHTML) * 25;
+            document.getElementById('quartval').innerHTML = "$" + quarter/100;
+            sum = (penny + nickel + dime + quarter)/100;
+            total = document.getElementById("total");
+            total.innerHTML = "$" + sum;
+        }
 		</script>
 	</head>
-	<body onload = "initialize();">
-        <!--pennies-->
-        Number of pennies: 
-        <h4 id = "penout"></h4>
-		<button onclick = "addOneP();">Add</button> 
-        <button onclick = "subtractOneP();">Subtract</button> 
-        <br><br>
-        <!--nickels-->
-        Number of nickels: 
-        <h4 id = "nickout"></h4>
-		<button onclick = "addOneN();">Add</button> 
-        <button onclick = "subtractOneN();">Subtract</button> 
-        <br><br>
-        <!--dimes-->
-        Number of dimes: 
-        <h4 id = "dimout"></h4>
-		<button onclick = "addOneD();">Add</button> 
-        <button onclick = "subtractOneD();">Subtract</button> 
-        <br><br>
-        <!--quarters-->
-        Number of quarters: 
-        <h4 id = "quartout"></h4>
-		<button onclick = "addOneQ();">Add</button> 
-        <button onclick = "subtractOneQ();">Subtract</button> 
-        <h3>Total: </h3>
-        <h2 id = "sum"></h2>
+	<body>
+        <h1>Count de Money</h1>
+        <h4>Pennies</h4>
+        <div id="stats">
+            <p>number of pennies: </p>
+            <p id="penny">0</p>
+        </div>
+        <div id="stats">
+            <p>total value of pennies:</p>
+            <p id="penval">$0.00</p>
+        </div>
+        <button onclick="add('penny');">Add</button>
+        <button onclick="subtract('penny');">Subtract</button>
+        <h4>Nickels</h4>
+        <div id="stats">
+            <p>number of nickels:</p>
+            <p id="nickel">0</p>
+        </div>
+        <div id="stats">
+            <p>total value of nickels:</p>
+            <p id="nicval">$0.00</p>
+        </div>
+        <button onclick="add('nickel');">Add</button>
+        <button onclick="subtract('nickel');">Subtract</button>
+        <h4>Dimes</h4>
+        <div id="stats">
+            <p>number of dimes:</p>
+            <p id="dime">0</p>
+        </div>
+        <div id="stats">
+            <p>total value of dimes:</p>
+            <p id="dimval">$0.00</p>
+        </div>
+        <button onclick="add('dime');">Add</button>
+        <button onclick="subtract('dime');">Subtract</button>
+        <h4>Quarters</h4>
+        <div id="stats">
+            <p>number of quarters:</p>
+            <p id="quarter">0</p>
+        </div>
+        <div id="stats">
+            <p>total value of quarters :</p>
+            <p id="quartval">$0.00</p>
+        </div>
+        <button onclick="add('quarter');">Add</button>
+        <button onclick="subtract('quarter');">Subtract</button>
+        <h3>Total Value: </h3>
+        <p id="total">$0.00</p>
 	</body>
 </html>
